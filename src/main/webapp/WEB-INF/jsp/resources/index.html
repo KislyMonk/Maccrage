@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Main</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="js/vue.js"></script>
+        <script  type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <link rel="stylesheet" href="main.css" >
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script  type="text/javascript" src="js/WeeklyReport.js"></script>
+    </head>
+    <body>
+        <input id="myID" type="text">
+        <div id="dataPicker">
+            <button
+                v-for="rep in reportsList"
+                v-bind:key="rep.name"
+                v-on:click="currentReport = rep.name"
+            >{{ rep.HUName }}</button>
+            
+            <component
+                v-bind:is="currentTabComponent"
+                v-bind:reportdata="currentReportData"
+                class="tab"
+            ></component>
+            
+        </div>
+    </body>
+</html>

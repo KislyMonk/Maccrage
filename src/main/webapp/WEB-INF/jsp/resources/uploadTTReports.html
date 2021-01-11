@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>uploadTT</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="js/vue.js"></script>
+        <script  type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script  type="text/javascript" src="js/reportsUpload.js"></script>
+    </head>
+    <body>
+        <form id="uploadReports" >
+            Загрузи файлик:  
+            <input type="file" multiple name="file" ref="uploadinput"><br /> 
+            <button v-on:click.prevent="upload()" > Upload</button>
+            
+            <li v-for="f in files">
+                {{f.name}}. Добавлено: {{f.add}}, не добавлено: {{f.notAdd}}
+            </li>  
+        </form>
+    </body>
+</html>
