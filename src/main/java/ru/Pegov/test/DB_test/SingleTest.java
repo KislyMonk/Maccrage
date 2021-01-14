@@ -1,4 +1,4 @@
-package DB_test;
+package ru.Pegov.test.DB_test;
 
 import org.junit.After;
 import org.junit.AfterClass;

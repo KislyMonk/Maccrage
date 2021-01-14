@@ -1,4 +1,4 @@
-package DB_test;
+package ru.Pegov.test.DB_test;
 
 import java.util.GregorianCalendar;
 import org.junit.After;

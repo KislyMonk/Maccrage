@@ -1,4 +1,4 @@
-package DB_test;
+package ru.Pegov.test.DB_test;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;

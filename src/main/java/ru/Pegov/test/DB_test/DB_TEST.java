@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DB_test;
+package ru.Pegov.test.DB_test;
 
 import java.sql.Timestamp;
 import static java.sql.Timestamp.from;
