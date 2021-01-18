@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import ru.Pegov.Macragge.DB.TTManager;
+import ru.Pegov.Macragge.DB.TTManagerDAO;
+import ru.Pegov.Macragge.DB.TroubleTicket;
 import ru.Pegov.Macragge.SigmaParser.SigmaReportParser;
 import ru.Pegov.Macragge.models.*;
 
@@ -37,11 +41,15 @@ public class UploadController {
     @PostMapping()
     public Reply upload(@RequestParam("file") MultipartFile[] file, HttpServletRequest request){
         ArrayList<HashMap<String,String>> result = new ArrayList();
+        TTManager ttManager = new TTManagerDAO();
         
         SigmaReportParser srp = new SigmaReportParser();
         for(int i = 0; i < file.length; i++){
             try {
-                srp.setInputStream(file[i].getInputStream());
+                List<TroubleTicket> tts = srp.getTTsList(file[i].getInputStream());
+
+                ttManager.addArrayTT(tts);
+
             } catch (IOException ex) {
                 System.out.println("[" + (new GregorianCalendar()) + 
                         "]ru.Pegov.Macragge.controllers.UploadController.upload() IOException " + ex);

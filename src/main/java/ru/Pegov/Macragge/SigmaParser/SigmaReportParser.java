@@ -45,7 +45,7 @@ public class SigmaReportParser {
         
     }
     
-    public void setInputStream(InputStream is){
+    public List<TroubleTicket> getTTsList(InputStream is){
         
         try{
             XSSFWorkbook sourceBook = new XSSFWorkbook(is);
@@ -66,8 +66,8 @@ public class SigmaReportParser {
             System.err.println("[" + (new GregorianCalendar()).toZonedDateTime().format(DateTimeFormatter.ofPattern("d MMM uuuu")) + 
                     "]ru.Pegov.Macragge.SigmaParser.SigmaReportParser can't parse file, IOException");
         }
-         TTManager ttManager = new TTManagerDAO();
-         ttManager.addArrayTT(tts);
+
+        return tts;
     }
 
     private void parseRow(Row r) {
